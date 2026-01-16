@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AliaBakes | Artisanal Sourdough in Cincinnati</title>
+
+<meta name="description" content="Small-batch artisanal sourdough baked weekly in Cincinnati. Friday and Wednesday delivery to Madeira, Indian Hill, Blue Ash, and Montgomery.">
+
+  <title>AliaBakes — Artisanal Bakery</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --cream-50:#FBF7F2;
+      --cream-100:#F3EDE4;
+      --white:#FFFFFF;
+
+      --brown-900:#3B2F2F;
+      --brown-700:#5A443A;
+      --brown-500:#8B6F61;
+
+      --accent:#C08A5A;
+      --accent-dark:#9E6E45;
+
+      --radius-sm:6px;
+      --radius-md:12px;
+      --radius-lg:20px;
+
+      --shadow-soft: 0 4px 20px rgba(59,47,47,0.08);
+      --shadow-hover: 0 10px 30px rgba(59,47,47,0.14);
+
+      --maxw:1100px;
+
+      --space-xs:.5rem;
+      --space-sm:1rem;
+      --space-md:2rem;
+      --space-lg:4rem;
+      --space-xl:6rem;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--brown-900);
+      background:var(--cream-50);
+      line-height:1.6;
+    }
+    a{color:inherit}
+    .container{
+      width:100%;
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:0 var(--space-md);
+    }
+
+    /* Subscription cards */
+    .sub-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .sub-card{
+      text-decoration:none;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(90,68,58,0.14);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 1.25rem;
+      transition: transform .16s ease, box-shadow .16s ease;
+      display:flex;
+      flex-direction:column;
+      gap: .5rem;
+    }
+    .sub-card:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .sub-title{
+      font-family:"Playfair Display", serif;
+      font-weight:700;
+      font-size: 1.2rem;
+      color: var(--brown-900);
+    }
+    .sub-desc{
+      color: var(--brown-500);
+      line-height: 1.55;
+    }
+    .sub-btn{
+      margin-top: .75rem;
+      width: fit-content;
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      background:rgba(251,247,242,0.88);
+      backdrop-filter:saturate(150%) blur(10px);
+      border-bottom:1px solid rgba(90,68,58,0.12);
+      z-index:10;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: .9rem 0;
+      gap: var(--space-md);
+    }
+
+    /* Brand */
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: .9rem;
+      text-decoration:none;
+      min-width: 220px;
+    }
+    .brand-logo{
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      overflow:hidden;
+      border: 1px solid rgba(90,68,58,0.18);
+      box-shadow: var(--shadow-soft);
+      background: rgba(255,255,255,0.7);
+      flex: 0 0 auto;
+    }
+    .brand-logo img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .brand-text .name{
+      font-family:"Playfair Display", serif;
+      font-size:1.15rem;
+      letter-spacing:.2px;
+      font-weight:700;
+    }
+    .brand-text .tag{
+      font-size:.9rem;
+      color:var(--brown-500);
+      font-weight:500;
+      margin-top:.1rem;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:.75rem;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .navlinks a{
+      text-decoration:none;
+      color:var(--brown-700);
+      font-weight:600;
+      font-size:.95rem;
+      padding:.45rem .7rem;
+      border-radius:999px;
+    }
+    .navlinks a:hover{
+      background:rgba(243,237,228,0.9);
+    }
+
+    /* Buttons */
+    .btn{
+      border:0;
+      cursor:pointer;
+      border-radius:999px;
+      padding:.75rem 1rem;
+      font-weight:700;
+      letter-spacing:.2px;
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      background:var(--accent);
+      color:var(--white);
+      box-shadow:0 10px 20px rgba(192,138,90,0.25);
+    }
+    .btn-primary:hover{ background:var(--accent-dark); transform:translateY(-1px); }
+    .btn-secondary{
+      background:transparent;
+      color:var(--brown-700);
+      border:1px solid rgba(139,111,97,0.5);
+    }
+    .btn-secondary:hover{
+      background:var(--cream-100);
+      transform:translateY(-1px);
+      border-color:rgba(139,111,97,0.8);
+    }
+
+    /* Typography */
+    h1,h2,h3{
+      font-family:"Playfair Display", serif;
+      line-height:1.15;
+      margin:0 0 .6rem 0;
+      color:var(--brown-900);
+    }
+    h1{ font-size: clamp(2.2rem, 4vw, 3rem); }
+    h2{ font-size: clamp(1.6rem, 2.6vw, 2.15rem); }
+    h3{ font-size: 1.3rem; }
+    .muted{ color: var(--brown-500); margin:0; }
+    .kicker{
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-size:.75rem;
+      color:rgba(90,68,58,0.75);
+      margin-bottom:.6rem;
+    }
+
+    /* Hero */
+    .hero{
+      padding: var(--space-xl) 0 var(--space-lg);
+      background: radial-gradient(1200px 500px at 20% 10%, rgba(192,138,90,0.18), transparent 60%),
+                  radial-gradient(900px 500px at 90% 40%, rgba(90,68,58,0.10), transparent 60%),
+                  linear-gradient(180deg, var(--cream-50), var(--cream-100));
+      border-bottom:1px solid rgba(90,68,58,0.12);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-lg);
+      align-items:center;
+    }
+    .hero p{
+      font-size:1.05rem;
+      color:var(--brown-500);
+      margin: 0 0 var(--space-md) 0;
+      max-width: 62ch;
+    }
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.45rem .75rem;
+      border-radius:999px;
+      background:rgba(243,237,228,0.9);
+      border:1px solid rgba(90,68,58,0.14);
+      font-weight:700;
+      color:var(--brown-700);
+      font-size:.9rem;
+      margin-bottom:1rem;
+      width:fit-content;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:rgba(192,138,90,0.85);
+      box-shadow:0 0 0 5px rgba(192,138,90,0.14);
+    }
+    .cta-row{
+      display:flex;
+      gap:.75rem;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top: 1rem;
+    }
+    .meta-row{
+      display:flex;
+      gap:1.25rem;
+      margin-top: var(--space-md);
+      color:var(--brown-500);
+      font-weight:600;
+      flex-wrap:wrap;
+    }
+    .meta-row span{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,0.7);
+      border:1px solid rgba(90,68,58,0.14);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: var(--space-md);
+    }
+    .hero-card img{
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      border-radius: 14px;
+      display:block;
+      border:1px solid rgba(90,68,58,0.14);
+    }
+
+    section{ padding: var(--space-lg) 0; }
+    .tone-cream{ background:var(--cream-100); }
+
+    /* About */
+    .about{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: stretch;
+    }
+    .about .panel{
+      background: rgba(255,255,255,0.65);
+      border:1px solid rgba(90,68,58,0.14);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 2.5rem;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      height: 100%;
+    }
+    .about-image{
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border:1px solid rgba(90,68,58,0.14);
+      box-shadow: var(--shadow-soft);
+      display:block;
+    }
+
+    /* Checkout panel */
+    .checkout-panel{
+      max-width: 720px;
+      margin: 2.5rem auto 0;
+      background: rgba(255,255,255,0.78);
+      border:1px solid rgba(90,68,58,0.14);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 2.25rem;
+    }
+
+    /* Questions / Contact Form */
+    .contact-card{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: stretch;
+      background: rgba(255,255,255,0.68);
+      border:1px solid rgba(90,68,58,0.14);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 2.5rem;
+    }
+    .contact-left{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .contact-form{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-content:start;
+    }
+    .contact-form label{
+      display:flex;
+      flex-direction:column;
+      gap: .45rem;
+    }
+    .contact-form .full{ grid-column: 1 / -1; }
+    .label{
+      font-weight:700;
+      color: var(--brown-700);
+      font-size:.92rem;
+    }
+    .input, .textarea{
+      width:100%;
+      border-radius: 14px;
+      border:1px solid rgba(90,68,58,0.18);
+      background: rgba(251,247,242,0.75);
+      padding: .85rem 1rem;
+      font: inherit;
+      color: var(--brown-900);
+      outline: none;
+      transition: box-shadow .15s ease, border-color .15s ease;
+    }
+    .input:focus, .textarea:focus{
+      border-color: rgba(192,138,90,0.65);
+      box-shadow: 0 0 0 5px rgba(192,138,90,0.18);
+    }
+    .textarea{
+      resize: vertical;
+      min-height: 140px;
+    }
+    .actions{
+      display:flex;
+      align-items:center;
+      gap: 1rem;
+      flex-wrap:wrap;
+      margin-top: .25rem;
+    }
+
+    /* Footer (centered) */
+    footer{
+      padding: 3rem 0;
+      border-top:1px solid rgba(90,68,58,0.12);
+      background: var(--cream-100);
+      text-align:center;
+    }
+    .footer-center{
+      max-width: 720px;
+      margin: 0 auto;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: .75rem;
+    }
+    .footer-center .links{
+      display:flex;
+      gap: .75rem;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      color: var(--brown-700);
+      font-weight:700;
+    }
+    .footer-center .links a{
+      text-decoration:none;
+      padding:.35rem .6rem;
+      border-radius:999px;
+      border:1px solid rgba(90,68,58,0.14);
+      background: rgba(255,255,255,0.55);
+    }
+    .footer-center .links a:hover{
+      background: rgba(255,255,255,0.8);
+    }
+    .small{
+      font-size:.92rem;
+      color: var(--brown-500);
+      margin: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .about{ grid-template-columns: 1fr; }
+      .hero-card img{ height: 280px; }
+      .brand{ min-width: auto; }
+      .sub-grid{ grid-template-columns: 1fr; }
+      .contact-card{ grid-template-columns: 1fr; padding: 1.75rem; }
+      .contact-form{ grid-template-columns: 1fr; }
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top">
+          <div class="brand-logo">
+            <img src="aliabakes.jpg" alt="AliaBakes logo">
+          </div>
+          <div class="brand-text">
+            <div class="name">AliaBakes</div>
+            <div class="tag">Delivery to Madeira, Indian Hill, Blue Ash and Montgomery</div>
+          </div>
+        </a>
+
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#questions">Questions</a>
+          <a href="#contact">Contact</a>
+          <a class="btn btn-secondary" href="#checkout">Subscriptions</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge"><span class="dot"></span> Fresh bakes weekly · Limited batches</div>
+          <div class="kicker">Warm. Crafted. Unhurried.</div>
+
+          <h1>Artisanal sourdough made to feel like home.</h1>
+
+          <p>
+            Hi, I’m Alia! I bake small-batch sourdough using just four simple ingredients—organic unbleached flour, sourdough starter, filtered water, and salt. Choose Friday loaf delivery, Wednesday (“Hump Day”) delivery, biweekly options, or a one-time order, with secure checkout through Stripe.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#checkout">View subscriptions</a>
+            <a class="btn btn-secondary" href="#about">Learn more</a>
+          </div>
+
+          <div class="meta-row">
+            <span><span class="dot"></span> Naturally leavened</span>
+            <span><span class="dot"></span> Small-batch</span>
+            <span><span class="dot"></span> Local delivery</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="aliabakesbreads1.jpg" alt="Fresh artisan sourdough bread">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ABOUT + SUBSCRIPTIONS -->
+  <section id="about" class="tone-cream">
+    <div class="container">
+
+      <div class="about">
+        <div class="panel">
+          <div class="kicker">About</div>
+          <h2>Handmade. Small-batch. Baked with intention.</h2>
+          <p class="muted">
+            Behind each loaf is a careful, unhurried process: baked in limited runs with close attention to fermentation, flavor, and texture.
+          </p>
+          <p class="muted" style="margin-top:.85rem;">
+            Looking for something special? I also offer custom bread orders for gatherings and gifts, along with flexible weekly and biweekly subscriptions.
+          </p>
+          <div class="cta-row" style="margin-top:1.25rem;">
+            <a class="btn btn-primary" href="#questions">Ask a question</a>
+          </div>
+        </div>
+
+        <img class="about-image" src="aliabakesbreads2.jpg" alt="Fresh artisan sourdough bread">
+      </div>
+
+      <!-- CHECKOUT / SUBSCRIPTIONS -->
+      <aside id="checkout" class="checkout-panel" aria-label="Subscriptions">
+        <div class="kicker">Subscriptions</div>
+        <h3>Choose your loaf schedule</h3>
+        <p class="muted">Secure checkout via Stripe. Cancel anytime.</p>
+
+        <div class="sub-grid">
+          <a class="sub-card" href="https://buy.stripe.com/8x27sK9tBdG2fNXeTf0Ny01" target="_blank" rel="noopener">
+            <div class="sub-title">Friday Loaf</div>
+            <div class="sub-desc">Weekly delivery · our classic bake</div>
+            <span class="btn btn-primary sub-btn">Subscribe</span>
+          </a>
+
+          <a class="sub-card" href="https://buy.stripe.com/aFa6oG6hpeK6cBLbH30Ny03" target="_blank" rel="noopener">
+            <div class="sub-title">Hump Day Loaf</div>
+            <div class="sub-desc">Wednesday delivery · midweek pick-me-up</div>
+            <span class="btn btn-primary sub-btn">Subscribe</span>
+          </a>
+
+          <a class="sub-card" href="https://buy.stripe.com/cNi28q5dl7hE31b3ax0Ny06" target="_blank" rel="noopener">
+            <div class="sub-title">Biweekly Loaf</div>
+            <div class="sub-desc">Every other week · flexible rhythm</div>
+            <span class="btn btn-primary sub-btn">Subscribe</span>
+          </a>
+
+          <a class="sub-card" href="https://buy.stripe.com/3cI00iaxF0TgcBL3ax0Ny04" target="_blank" rel="noopener">
+            <div class="sub-title">One-time Order</div>
+            <div class="sub-desc">Single bake · limited batches</div>
+            <span class="btn btn-secondary sub-btn">Order once</span>
+          </a>
+        </div>
+
+        <p class="small" style="margin-top:1rem;">
+          Payments are processed securely by Stripe.
+        </p>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- QUESTIONS FORM (right before footer) -->
+  <section id="questions" class="tone-cream">
+    <div class="container">
+      <div class="contact-card">
+        <div class="contact-left">
+          <div class="kicker">Questions</div>
+          <h2>Have a question or a custom request?</h2>
+          <p class="muted">
+            Send a note about delivery, ingredients, allergies, or a custom order. I’ll reply within 24 hours.
+          </p>
+        </div>
+
+        <form class="contact-form" action="mailto:alia.f1980@yahoo.com" method="post" enctype="text/plain">
+          <label>
+            <span class="label">Your name</span>
+            <input class="input" type="text" name="name" placeholder="Your name" required>
+          </label>
+
+          <label>
+            <span class="label">Email</span>
+            <input class="input" type="email" name="email" placeholder="you@email.com" required>
+          </label>
+
+          <label class="full">
+            <span class="label">Message</span>
+            <textarea class="textarea" name="message" rows="5" placeholder="Tell me what you’re looking for..." required></textarea>
+          </label>
+
+          <div class="actions full">
+            <button class="btn btn-primary" type="submit">Send message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (CENTERED) -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-center">
+        <div class="kicker">AliaBakes</div>
+        <h3 style="margin:0;">Warm bakes from our kitchen to your table.</h3>
+
+        <div class="links" aria-label="Footer links">
+          <a href="#top">Top</a>
+          <a href="#about">About</a>
+          <a href="#checkout">Subscriptions</a>
+         
+        </div>
+
+        <p class="small">© <span id="year"></span> AliaBakes. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
